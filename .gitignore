@@ -1,0 +1,8 @@
+# Editors
+.idea
+
+VideoEditing
+__pycache__
+
+# Ignore the config for security reasons
+config.json
