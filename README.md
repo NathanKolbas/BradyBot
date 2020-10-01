@@ -9,7 +9,8 @@ The BradyBot's main feature is the ability to @ any user in the Discord which wi
 ## Documentation
 After adding the BradyBot to your Discord server, you can run the following commands:
   - `BradyBot execute @UserName`
-    - Overlays the user profile icon in an Among Us gif. The student being executed after one of Brady's clever questions ![example gif](Examples/example.gif)
+    - Overlays the user profile icon in an Among Us gif. The student being executed after one of Brady's clever questions  
+    ![example gif](Examples/example.gif)
   - `BradyBot quote` (TODO)
     - Reads a random quote from the BradyDatabase
   - `BradyBot add-quote` (TODO)
