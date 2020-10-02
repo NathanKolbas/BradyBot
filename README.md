@@ -11,6 +11,8 @@ After adding the BradyBot to your Discord server, you can run the following comm
   - `BradyBot execute @UserName`
     - Overlays the user profile icon in an Among Us gif. The student being executed after one of Brady's clever questions  
     ![example gif](Examples/example.gif)
+  - `BradyBot [kd, kills, executions, kill-count]`
+    - Tells you how many people Brady has executed
   - `BradyBot quote` (TODO)
     - Reads a random quote from the BradyDatabase
   - `BradyBot add-quote` (TODO)
