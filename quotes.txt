@@ -1,0 +1,46 @@
+“Okay, let’s search for ‘evil dog.’” (While looking for placeholder images)
+“What’s the silliest number you can think of?” (Asking in class as input to an algorithm)
+“Let's say I'm a software engineering instructor, and you're a student, and we're both floating in space. Can we talk?”
+“And now a break from your regularly scheduled programming.”
+“We can just glomp them together.”
+“Hey Wyatt, what are all your grades?” (When using grades as an example)
+“Imagine you're cooking rice…”
+“So that’s 2/2 today with video games as the example…” (When learning to make sub points in outline form during requirements engineering section)
+“If we put all the passengers in the one lowest priced seat, then the plane’s not going to fly very well… it will be off balance.” (When deriving requirements for a ‘lowest priced seat’ button)
+“I guess I pick numbers really luckily.”
+“If I can type” (correcting a typo)
+“Are you guys ready for an extra difficult problem?”
+“We're worried about the sad path, we're not worried about the happy path...”
+“I don’t know what this means… but I definitely know what I have to Google for.” (Whilst debugging and reading a log in Konsole)
+“So this one time I was offered a job at Microsoft… I opted not to work there. But the interview was okay.”
+“My computer is getting back Tuesday” “You mean today?” “Oh... yes, that would make today Tuesday. Oh yes, that is today.”
+“I think they’re ready to take this on… Ok maybe he should have gone on for longer, there was a trap”
+“We don’t want Neil Armstrong randomly showing up.”
+“We start off with P=NP, and then the second is the Riemann Hypothesis, so not too bad. And the last problem is just Poincare Conjecture, which is already solved so it’s super easy if you can just recite the solution they already found...” (when describing the SOFT 260 midterm).
+“We can see the light at the end of the tunnel, even though it’s raining outside.” (end of module 2)
+“Let’s say I’m Brady, and I want the whole plane to myself...”
+“Where should I try and sit to be evil?” (plane example)
+“You don’t get to admire my artwork anymore” (when erasing his plane drawing)
+“Now I'm going to teach you a lesson on being evil" (teaching Antagonistic Scenario based approach)
+“Hi my name is Brady… Brady like from the Brady Bunch”
+“Ah, first blood.” (at the discovery of the first inconsistency in system requirements)
+“Oh, actually, they haven’t seen that yet…. that is what they are supposed to learn in this lecture…. Do you quickly want me to go over that material? …. Okay, mini-lecture! Here we go…” (correcting Vu’s lecture)
+“All of you should fire me because I’m a horrible software engineer” (after suggesting taking the average of two medians to find the median of a longer list)
+“How much time do we have left? Ohhhhh boy...”
+“Between logarithmic and exponential… that’s really precise. That’s only like the runtime of 95% of the algorithms in the practice.”
+“Nonsense plus nonsense equals nonsense.”
+“If I had a string way out here in the boonies…”
+“It’s like a tree that hasn’t grown up yet.”
+“You have to figure out a good F.”
+“If you take stupid and average with stupid, you sometimes get intelligent.”
+“You have a Scrum Master… which sounds like a black belt.”
+“You might have to go back and change the past”
+“You’ll have to change someone else’s past, not your own”
+“Why do people time travel and rewrite history?”
+*Jack asks a dumb question* “Hm….. Let me be more careful with my wording”
+"The head of master, that’s where the squash is gonna come up"
+"Commit your mistakes, commit your mistakes, commit your mistakes”
+"Show how a bug happens… watch it go "Kabluke."
+“Since some of you were talking about Minecraft earlier….”
+"Just imagine as a human I've got a bad coloring"
+"I am the evil brady"
