@@ -30,8 +30,13 @@ After adding the BradyBot to your Discord server, you can run the following comm
     - Tells you how many people Brady has executed
   - `BradyBot quote` (TODO)
     - Reads a random quote from the BradyDatabase
-  - `BradyBot add-quote` (TODO)
+    - Optionally you can specify the line of the quote (e.g.`BradyBot quote 1`)
+  - `BradyBot quote-all`
+    - Shows all the quotes
+  - `BradyBot add quote quote_text`
     - Add a quote to the BradyDatabase
+  - `BradyBot remove-quote quote_line`
+    - Removes a quote by the line. Requires Administrator permission to do so.
   - `BradyBot help`
     - Help and commands for the BradyBot
 
