@@ -16,7 +16,7 @@ async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
-    if message.content.lower().startswith('test '):
+    if message.content.lower().startswith('bradybot '):
         helper = Helper(message.author)
         commands = message.content.split(' ', 2)
         del commands[0]
