@@ -1,4 +1,4 @@
-from create_gif import create_gif
+from create_gif import CreateGif, Gifs
 import discord
 import json
 from run_helper import *
@@ -10,6 +10,7 @@ TOKEN = config['BOT_TOKEN']
 
 client = discord.Client()
 
+
 @client.event
 async def on_message(message):
     # we do not want the bot to reply to itself
@@ -17,34 +18,32 @@ async def on_message(message):
         return
 
     if message.content.lower().startswith('bradybot '):
-        commands = message.content.split(' ')
+        commands = message.content.split(' ', 2)
         commands.pop(0)
         if commands[0].lower() == 'execute':
             increment_count()
+            argument_data = commands[1]
             if message.mentions:
                 mentioned_user = message.mentions[0]
-                profile_icon = mentioned_user.avatar_url
-                gif = create_gif(profile_icon)
-                msg = f"Brady has executed {commands[1]}"
-                await message.channel.send(msg, file=discord.File(gif))
-            else:
-                # List is empty
-                gif = create_gif(None)
-                msg = f"Brady has executed {commands[1]}. (Note: Use their @ to get their profile icon)"
-                await message.channel.send(msg, file=discord.File(gif))
+                argument_data = mentioned_user.avatar_url
+
+            CreateGif(argument_data).generate_gif(Gifs.AMONG_US_KILL)
+            msg = f"Brady has executed {commands[1]}"
+            await message.channel.send(msg, file=discord.File('output.gif'))
         elif commands[0].lower() in ['kd', 'kills', 'executions', 'kill-count']:
             kills = get_count()
             msg = f"My current {commands[0]} is {kills} and I do not plan to stop. \n\"Ah, first blood.\" - 🅱"
             await message.channel.send(msg)
         elif commands[0].lower() == 'quote':
             pass
-        else:
+        elif commands[0].lower() == 'help':
             msg = """ 
 The current available BradyBot commands are:\n
 • `BradyBot execute @UserName`
     - Creates a gif of that user getting killed in Among Us
-    - Use the users @ in the command to use their icon in the gif\n
-• `BradyBot [kd, kills, executions, kill-count]`
+    - Use the users @ in the command to use their icon in the gif
+    - Type any text after to search for an image\n
+• `BradyBot kd|kills|executions|kill-count`
     - Tells you how many people Brady has executed\n
 • `BradyBot quote`
     - Sends a random quote from Brady (TODO)\n
@@ -53,6 +52,7 @@ The current available BradyBot commands are:\n
 Created by: Nathan Kolbas
 """
             await message.channel.send(msg)
+
 
 @client.event
 async def on_ready():
