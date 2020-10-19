@@ -1,4 +1,5 @@
 from datetime import datetime
+import markovify
 import os.path
 import random
 
@@ -55,6 +56,18 @@ class Helper:
             open(LOG_FILE, "w+")
         logs = open(LOG_FILE, "r").read()
         open(LOG_FILE, "w").write(logs + f"{datetime.now()}: {text}\n")
+
+    def markov(self):
+        """
+        Creates a Markov chain from the quotes.txt file to create generated Brady messages
+        :return: String
+        """
+        with open(QUOTES_FILE, encoding="utf8") as f:
+            text = f.read()
+
+        text_model = markovify.NewlineText(text)
+
+        return text_model.make_sentence(tries=100, state_size=3)
 
     def random_quote(self):
         """

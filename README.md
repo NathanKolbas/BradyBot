@@ -42,6 +42,8 @@ After adding the BradyBot to your Discord server, you can run the following comm
     - Add a quote to the BradyDatabase
   - `BradyBot remove-quote quote_line`
     - Removes a quote by the line. Requires Administrator permission to do so.
+  - `BradyBot markov`
+    - Creates a Markov chain using the quotes added to the BradyBot
   - `BradyBot new`
     - Tells you about what is new, features, improvements, and/or commands for the most recent update
   - `BradyBot help`

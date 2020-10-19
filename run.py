@@ -83,11 +83,15 @@ async def on_message(message):
             else:
                 msg = 'You do not have the permissions to delete a quote (Administrator permission needed).'
             await message.channel.send(msg)
+        elif commands[0].lower() == 'markov':
+            msg = helper.markov()
+            await message.channel.send(msg)
         elif commands[0].lower() == 'new':
             msg = """ 
 New features/improvements/commands:\n
 • Added smash/challenger gif. Use command `BradyBot smash|challenger @UserName` to use it. Optionally type any text in 
-for `@UserName` to search for an image.
+for `@UserName` to search for an image.\n
+• Added Markov chains created from the quotes added to the BradyBot. Use command `BradyBot markov`.
 """
             await message.channel.send(msg)
         elif commands[0].lower() == 'help':
@@ -110,8 +114,10 @@ The current available BradyBot commands are:\n
     - Shows all the quotes\n
 • `BradyBot add quote the_quote_you_would_like_to_add`
     - Adds a new quote into Brady's endless knowledge\n
+• `BradyBot markov`
+    - Creates a Markov chain using the quotes added to the BradyBot\n
 • `BradyBot new`
-    - Tells you about what is new, new features, improvements, and/or commands for the most recent update\n
+    - Tells you about what is new, features, improvements, and/or commands for the most recent update\n
 • `BradyBot remove-quote quote_line`
     - Removes a quote by the line. Requires Administrator permission to do so.\n
 Created by: Nathan Kolbas
