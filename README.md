@@ -28,7 +28,12 @@ After adding the BradyBot to your Discord server, you can run the following comm
     ![example gif](Examples/example.gif)
   - `BradyBot kd|kills|executions|kill-count`
     - Tells you how many people Brady has executed
-  - `BradyBot quote` (TODO)
+  - `BradyBot smash|challenger @UserName`
+    - Creates a gif of that user getting introduced in smash
+    - Use the users @ in the command to use their icon in the gif
+    - Type any text after to search for an image  
+    ![example challenger_gif](Examples/example_challenger.gif)
+  - `BradyBot quote`
     - Reads a random quote from the BradyDatabase
     - Optionally you can specify the line of the quote (e.g.`BradyBot quote 1`)
   - `BradyBot quote-all`
@@ -37,6 +42,8 @@ After adding the BradyBot to your Discord server, you can run the following comm
     - Add a quote to the BradyDatabase
   - `BradyBot remove-quote quote_line`
     - Removes a quote by the line. Requires Administrator permission to do so.
+  - `BradyBot new`
+    - Tells you about what is new, features, improvements, and/or commands for the most recent update
   - `BradyBot help`
     - Help and commands for the BradyBot
 

@@ -34,6 +34,15 @@ async def on_message(message):
             kills = helper.get_count()
             msg = f"My current {commands[0]} is {kills} and I do not plan to stop. \n\"Ah, first blood.\" - 🅱"
             await message.channel.send(msg)
+        elif commands[0].lower() in ['smash', 'challenger']:
+            argument_data = commands[1]
+            if message.mentions:
+                mentioned_user = message.mentions[0]
+                argument_data = mentioned_user.avatar_url
+
+            CreateGif(argument_data).generate_gif(Gifs.CHALLENGER)
+            msg = f"You dare to challenge me {commands[1]}?"
+            await message.channel.send(msg, file=discord.File('output.gif'))
         elif commands[0].lower() == 'quote':
             del commands[0]
             if len(commands) > 0:
@@ -63,7 +72,6 @@ async def on_message(message):
                 await message.channel.send(msg)
         elif commands[0].lower() == 'remove-quote':
             del commands[0]
-            print(message.author)
             if message.author.guild_permissions.administrator:
                 line = int(commands[0])
                 if 0 < line <= len(helper.get_quotes()):
@@ -75,6 +83,13 @@ async def on_message(message):
             else:
                 msg = 'You do not have the permissions to delete a quote (Administrator permission needed).'
             await message.channel.send(msg)
+        elif commands[0].lower() == 'new':
+            msg = """ 
+New features/improvements/commands:\n
+• Added smash/challenger gif. Use command `BradyBot smash|challenger @UserName` to use it. Optionally type any text in 
+for `@UserName` to search for an image.
+"""
+            await message.channel.send(msg)
         elif commands[0].lower() == 'help':
             msg = """ 
 The current available BradyBot commands are:\n
@@ -84,6 +99,10 @@ The current available BradyBot commands are:\n
     - Type any text after to search for an image\n
 • `BradyBot kd|kills|executions|kill-count`
     - Tells you how many people Brady has executed\n
+• `BradyBot smash|challenger @UserName`
+    - Creates a gif of that user getting introduced in smash
+    - Use the users @ in the command to use their icon in the gif
+    - Type any text after to search for an image\n
 • `BradyBot quote`
     - Sends a random quote from Brady
     - Optionally you can specify the line of the quote (e.g. `BradyBot quote 1`)\n
@@ -91,6 +110,8 @@ The current available BradyBot commands are:\n
     - Shows all the quotes\n
 • `BradyBot add quote the_quote_you_would_like_to_add`
     - Adds a new quote into Brady's endless knowledge\n
+• `BradyBot new`
+    - Tells you about what is new, new features, improvements, and/or commands for the most recent update\n
 • `BradyBot remove-quote quote_line`
     - Removes a quote by the line. Requires Administrator permission to do so.\n
 Created by: Nathan Kolbas

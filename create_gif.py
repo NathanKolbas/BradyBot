@@ -53,7 +53,14 @@ class Gifs(Enum):
                    (321, 218), (321, 218), (321, 218), (321, 218), (321, 218), (321, 218), (316, 192), (316, 192),
                    (316, 192), (316, 192), (316, 192), (316, 192), (316, 192), (316, 192), (316, 192), None, None,
                    None, None, None, None, None, None, None, None, None, None, None, None, None],
-        'frames_path': '',
+        'frames_path': 'among_us/',
+        'custom_image_size': (64, 64),
+        'fps': 25
+    }
+    CHALLENGER = {
+        'points': [None if n < 7 else (350, 140) for n in range(76)],
+        'frames_path': 'challenger/',
+        'custom_image_size': (120, 120),
         'fps': 25
     }
 
@@ -73,7 +80,7 @@ class CreateGif:
     def custom_image(self, image):
         self._custom_image = image
 
-    def _set_image(self):
+    def _set_image(self, gif):
         custom_image = self._custom_image
         output = 'default.png'
 
@@ -97,14 +104,14 @@ class CreateGif:
 
         image = Image.open(output).convert('RGBA')
         image.load()
-        image.thumbnail(size=(64, 64))
+        image.thumbnail(size=gif['custom_image_size'])
         return image
 
     def generate_gif(self, gif):
         # Local vars
         gif = gif.value
         frames = []
-        custom_image = self._set_image()
+        custom_image = self._set_image(gif)
 
         # Get the frames for the gif and sort from 1 to n
         frames_path = f"{self._working_directory}/Frames/{gif['frames_path']}"
@@ -121,14 +128,14 @@ class CreateGif:
         for n in range(len(filenames)):
             # Check if None
             if overlay_points[n]:
-                background = Image.open(filenames[n])
+                background = Image.open(filenames[n]).convert('RGB')
                 background.paste(custom_image, translate_center(overlay_points[n], custom_image), custom_image)
                 frames.append(background)
             else:
                 frames.append(Image.open(filenames[n]))
 
         # Generate the gif
-        with imageio.get_writer('output.gif', mode='I', fps=25) as writer:
+        with imageio.get_writer('output.gif', mode='I', fps=gif['fps']) as writer:
             for frame in frames:
                 # We need to encode PIL Image as a PNG in memory
                 buffer = io.BytesIO()
