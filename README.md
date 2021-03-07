@@ -8,7 +8,7 @@ The BradyBot's main feature is the ability to @ any user in the Discord which wi
 
 ## Getting started
 #### Installing
-To install the required dependencies, simply run the command `pip install -r requirements.txt`.
+To install the required dependencies, simply run the command `pip install -r requirements.txt`. Optionally, for gif file size optimization to work please install [gifsicle](https://www.lcdf.org/gifsicle/). For example, gifscale reduces the file size of the Among Us gif generation by ~37%.
 
 #### Setup
 Create a `config.json` file in the root directory of the project. This will story secrets used by the bot.  Example `config.json` file:

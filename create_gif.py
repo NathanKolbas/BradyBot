@@ -2,7 +2,7 @@ import sys
 from enum import Enum
 from google_images_search import GoogleImagesSearch
 from PIL import Image
-import imageio
+from pygifsicle import optimize
 import io
 import json
 import os
@@ -38,6 +38,11 @@ def natural_sort(text):
 def translate_center(point, file):
     image_size = file.convert('RGB').size
     return int(point[0] - (image_size[0] / 2)), int(point[1] - (image_size[1] / 2))
+
+
+def warning(message):
+    message = f"\033[93mWARNING:\033[0m {message}"
+    print(message)
 # Static methods END
 
 
@@ -135,15 +140,23 @@ class CreateGif:
                 frames.append(Image.open(filenames[n]))
 
         # Generate the gif
-        with imageio.get_writer('output.gif', mode='I', fps=gif['fps']) as writer:
-            for frame in frames:
-                # We need to encode PIL Image as a PNG in memory
-                buffer = io.BytesIO()
-                frame.save(buffer, format='PNG')
-                desired_object = buffer.getbuffer()
-                image = imageio.imread(desired_object)
-                writer.append_data(image)
-        return 'output.gif'
+        # Might be worth while to look into doing this in memory only. This might help:
+        # https://docs.python.org/3/library/tempfile.html
+        output_path = 'output.gif'
+        frames[0].save(output_path,
+                       format='GIF',
+                       append_images=frames[1:],
+                       save_all=True,
+                       duration=1000 / gif['fps'],
+                       loop=0)
+        # Optimize the gif using gifsicle to reduce file size
+        try:
+            optimize(output_path)
+        except FileNotFoundError:
+            warning('Unable to optimize the gif. Please make sure gifsicle is installed.\nContinuing without '
+                    'optimization...\n')
+
+        return output_path
 
     def google_image_search(self, search_text):
         """
