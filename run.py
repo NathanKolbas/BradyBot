@@ -27,9 +27,12 @@ async def on_message(message):
                 mentioned_user = message.mentions[0]
                 argument_data = mentioned_user.avatar_url
 
-            output_path = CreateGif(argument_data).generate_gif(Gifs.AMONG_US_KILL)
+            file = CreateGif(argument_data).generate_gif(Gifs.AMONG_US_KILL)
             msg = f"Brady has executed {commands[1]}"
-            await message.channel.send(msg, file=discord.File(output_path, 'hello_is_anyone_there.gif'))
+            await message.channel.send(msg, file=discord.File(file.name, 'hello_is_anyone_there.gif'))
+            # Close and delete the temp file
+            file.close()
+            os.unlink(file.name)
         elif commands[0].lower() in ['kd', 'kills', 'executions', 'kill-count']:
             kills = helper.get_count()
             msg = f"My current {commands[0]} is {kills} and I do not plan to stop. \n\"Ah, first blood.\" - 🅱"

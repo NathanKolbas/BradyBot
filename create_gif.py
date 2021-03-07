@@ -9,6 +9,7 @@ import os
 from os.path import isfile, join
 import re
 import requests
+import tempfile
 from urllib.parse import urlparse
 
 
@@ -140,10 +141,8 @@ class CreateGif:
                 frames.append(Image.open(filenames[n]))
 
         # Generate the gif
-        # Might be worth while to look into doing this in memory only. This might help:
-        # https://docs.python.org/3/library/tempfile.html
-        output_path = 'output.gif'
-        frames[0].save(output_path,
+        file = tempfile.NamedTemporaryFile(delete=False, suffix='.gif')
+        frames[0].save(file.name,
                        format='GIF',
                        append_images=frames[1:],
                        save_all=True,
@@ -151,12 +150,12 @@ class CreateGif:
                        loop=0)
         # Optimize the gif using gifsicle to reduce file size
         try:
-            optimize(output_path)
+            optimize(file.name)
         except FileNotFoundError:
             warning('Unable to optimize the gif. Please make sure gifsicle is installed.\nContinuing without '
                     'optimization...\n')
 
-        return output_path
+        return file
 
     def google_image_search(self, search_text):
         """
