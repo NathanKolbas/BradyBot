@@ -43,9 +43,12 @@ async def on_message(message):
                 mentioned_user = message.mentions[0]
                 argument_data = mentioned_user.avatar_url
 
-            output_path = CreateGif(argument_data).generate_gif(Gifs.CHALLENGER)
+            file = CreateGif(argument_data).generate_gif(Gifs.CHALLENGER)
             msg = f"You dare to challenge me {commands[1]}?"
-            await message.channel.send(msg, file=discord.File(output_path, 'please_send_help.gif'))
+            await message.channel.send(msg, file=discord.File(file.name, 'please_send_help.gif'))
+            # Close and delete the temp file
+            file.close()
+            os.unlink(file.name)
         elif commands[0].lower() == 'quote':
             del commands[0]
             if len(commands) > 0:
