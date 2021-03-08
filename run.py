@@ -16,7 +16,7 @@ async def on_message(message):
     # we do not want the bot to reply to itself
     if message.author == client.user:
         return
-    if message.content.lower().startswith('bradybot '):
+    if message.content.lower().startswith('bradybot ') or client.user in message.mentions:
         helper = Helper(message.author)
         commands = message.content.split(' ', 2)
         del commands[0]
@@ -89,15 +89,18 @@ async def on_message(message):
             else:
                 msg = 'You do not have the permissions to delete a quote (Administrator permission needed).'
             await message.channel.send(msg)
+        elif message.content[-1] == '?':
+            msg = helper.random_quote()
+            await message.channel.send(msg)
         elif commands[0].lower() == 'markov':
             msg = helper.markov()
             await message.channel.send(msg)
         elif commands[0].lower() == 'new':
             msg = """ 
 New features/improvements/commands:\n
-• Added smash/challenger gif. Use command `BradyBot smash|challenger @UserName` to use it. Optionally type any text in 
-for `@UserName` to search for an image.\n
-• Added Markov chains created from the quotes added to the BradyBot. Use command `BradyBot markov`.
+• You can now @ BradyBot for commands\n
+• Ask him a question\n
+• Gif file size has been reduced and generating gifs is now faster
 """
             await message.channel.send(msg)
         elif commands[0].lower() == 'help':
