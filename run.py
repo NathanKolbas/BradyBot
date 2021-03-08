@@ -129,7 +129,7 @@ The current available BradyBot commands are:\n
     - Tells you about what is new, features, improvements, and/or commands for the most recent update\n
 • `BradyBot remove-quote quote_line`
     - Removes a quote by the line. Requires Administrator permission to do so.\n
-Created by: Nathan Kolbas
+Created by: Nathan Kolbas - <https://github.com/NathanKolbas/BradyBot>
 """
             await message.channel.send(msg)
 
