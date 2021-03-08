@@ -134,11 +134,11 @@ class CreateGif:
         for n in range(len(filenames)):
             # Check if None
             if overlay_points[n]:
-                background = Image.open(filenames[n]).convert('RGB')
+                background = Image.open(filenames[n]).convert('RGBA')
                 background.paste(custom_image, translate_center(overlay_points[n], custom_image), custom_image)
                 frames.append(background)
             else:
-                frames.append(Image.open(filenames[n]))
+                frames.append(Image.open(filenames[n]).convert('RGBA'))
 
         # Generate the gif
         file = tempfile.NamedTemporaryFile(delete=False, suffix='.gif')
