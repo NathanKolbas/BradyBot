@@ -71,3 +71,11 @@
 "I am a Pitivi evangelist"
 "But nobody's grade should drop more than 1% "
 "'I want you to fail' - Dyer"
+"I'm more of an agile purist"
+"We need to know where we're finding these humans"
+"I don't know Windows very well."
+"\x00"
+\x00
+"I just teach the class, I don't really know much about it."
+"football managers are like nazis -samal"
+BradyBot quote 49
